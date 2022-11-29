@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "mgp:block/explosive_barrel",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "mgp:block/explosive_barrel",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "mgp:block/explosive_barrel",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "mgp:block/explosive_barrel",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "mgp:block/explosive_barrel"
+    },
+    "facing=west": {
+      "model": "mgp:block/explosive_barrel",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

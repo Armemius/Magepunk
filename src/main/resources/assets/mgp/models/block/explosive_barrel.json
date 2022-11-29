@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "mgp:block/explosive_barrel/explosive_barrel_bottom",
+    "side": "mgp:block/explosive_barrel/explosive_barrel_side",
+    "top": "mgp:block/explosive_barrel/explosive_barrel_top"
+  }
+}

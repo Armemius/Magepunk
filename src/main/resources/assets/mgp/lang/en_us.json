@@ -1,0 +1,59 @@
+{
+  "event.mgp.bloodmoon.desc": "A scarlet silhouette looms on the horizon",
+  "event.mgp.eternal_night.desc": "The sun will never rise",
+  "event.mgp.eclipse.desc": "Darkness does not recede",
+  "event.mgp.doomsday.desc": "The blood of the innocent will be shed",
+
+  "tab.mgp.test": "Test",
+  "tab.mgp.basics": "Basics",
+
+  "tech.mgp.locked": "Not yet...",
+  "tech.mgp.test1": "Test tech 1",
+  "tech.mgp.test2": "Test tech 2",
+  "tech.mgp.test3": "Test tech 3",
+
+  "item.mgp.knowledge_piece": "Knowledge fragment",
+  "item.mgp.enchiridion": "Enchiridion",
+  "item.mgp.research": "Research",
+  "item.mgp.inkwell_with_feather": "Inkwell with feather",
+
+  "mgp.research.start": "Start research",
+  "mgp.research.started": "You've started researching '%s'",
+  "mgp.research.no_slots": "No free slots",
+  "mgp.research.no_paper": "You have no paper",
+  "mgp.research.no_pen": "You have no writing instruments",
+  "mgp.research.have_notes": "You already have notes of this research",
+  "mgp.research.ready": "Ready",
+  "mgp.research.in_progress": "In progress (%d%%)",
+  "mgp.research.not_ready": "Not ready",
+  "mgp.research.analyze": "Analyze received data",
+  "mgp.research.continue": "Continue research",
+  "mgp.research.inkwell_empty": "Your inkwell is empty",
+  "mgp.research.techs_not_ready": "Complete all the tasks",
+  "mgp.research.research_ready": "You finished research '%s'",
+  "mgp.research.research_already_finished": "You have already finished this research",
+  "mgp.research.research_early": "You can't understand this",
+
+  "mgp.tech.diff": "Estimated difficulty",
+  "mgp.tech.diff.none": "None",
+  "mgp.tech.diff.easy": "Easy",
+  "mgp.tech.diff.medium": "Medium",
+  "mgp.tech.diff.hard": "Hard",
+  "mgp.tech.diff.insane": "Insane",
+
+  "mgp.tech.unavailable": "Unavailable",
+
+  "tech.mgp.test1.desc": "Sample description 1 and some deez nuts lolololololol i love cubes and everything connected to them xdxdxd minecraft gui making is really painful ma cat is so damn cute",
+  "tech.mgp.test2.desc": "Sample description 2 and some deez nuts lolololololol i love cubes and everything connected to them xdxdxd minecraft gui making is really painful ma cat is so damn cute",
+  "tech.mgp.test3.desc": "Sample description 3 and some deez nuts lolololololol i love cubes and everything connected to them xdxdxd minecraft gui making is really painful ma cat is so damn cute",
+
+
+  "mgp.item.tooltip.tech": "Tech",
+  "mgp.item.tooltip.analyzable": "Ready to analyze",
+
+  "mgp.tech.tooltip.test1": "Test tech tooltip 1",
+  "mgp.tech.tooltip.test2": "Test tech tooltip 2",
+  
+
+  "console.mgp.count": "Count: %d"
+}
