@@ -9,6 +9,7 @@ import com.armemius.magepunk.research.tech.render.PageRenderComponents
 import com.armemius.magepunk.research.tech.render.components.ImageRenderComponent
 import com.armemius.magepunk.research.tech.render.components.PlainTextRendererComponent
 import com.armemius.magepunk.research.tech.render.components.TitleRenderComponent
+import com.armemius.magepunk.research.tech.render.components.WorkbenchCraftingRenderComponent
 import net.minecraft.block.Blocks
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.Items
@@ -75,7 +76,11 @@ class Test2Tech(links: List<Tech>): Tech(
         PageRenderComponents(
             listOf(
                 TitleRenderComponent(Text.translatable("tech.mgp.test2"), 12, -16777216),
-                PlainTextRendererComponent(Text.of("AMOGUSUS PAGE 2"), 8, -16777216)
+                PlainTextRendererComponent(Text.of("AMOGUSUS PAGE 2"), 8, -16777216),
+                WorkbenchCraftingRenderComponent(Items.IRON_BLOCK.defaultStack,
+                    Items.IRON_INGOT.defaultStack, Items.IRON_INGOT.defaultStack, Items.IRON_INGOT.defaultStack,
+                    Items.IRON_INGOT.defaultStack, Items.IRON_INGOT.defaultStack, Items.IRON_INGOT.defaultStack,
+                    Items.IRON_INGOT.defaultStack, Items.IRON_INGOT.defaultStack, Items.IRON_INGOT.defaultStack)
             )
         ),
         PageRenderComponents(

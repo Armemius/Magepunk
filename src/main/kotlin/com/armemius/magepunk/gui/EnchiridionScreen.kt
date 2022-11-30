@@ -18,6 +18,7 @@ import net.minecraft.client.font.TextRenderer
 import net.minecraft.client.gui.DrawableHelper
 import net.minecraft.client.gui.screen.Screen
 import net.minecraft.client.render.GameRenderer
+import net.minecraft.client.render.item.ItemRenderer
 import net.minecraft.client.util.NarratorManager
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.entity.player.PlayerEntity
@@ -33,7 +34,8 @@ import kotlin.math.sin
 class EnchiridionScreen(private var player: PlayerEntity) : Screen(NarratorManager.EMPTY) {
     private val SCREEN_TEXTURE = Identifier(Magepunk.ID, "textures/gui/research/research_screen.png")
     private val TECHS_INTERACTION_SCREEN_TEXTURE = Identifier(Magepunk.ID, "textures/gui/research/info.png")
-    private val ARROWS_TEXTURE = Identifier(Magepunk.ID, "textures/gui/research/arrows.png")
+    private val LEFT_ARROW_TEXTURE = Identifier(Magepunk.ID, "textures/gui/research/left_arrow.png")
+    private val RIGHT_ARROW_TEXTURE = Identifier(Magepunk.ID, "textures/gui/research/right_arrow.png")
     private val BUTTONS_TEXTURE = Identifier(Magepunk.ID, "textures/gui/research/buttons.png")
     private val TABS_TEXTURE = Identifier(Magepunk.ID, "textures/gui/research/tabs.png")
 
@@ -50,9 +52,6 @@ class EnchiridionScreen(private var player: PlayerEntity) : Screen(NarratorManag
     var activeConfirmScreen: Tech? = null
     var activeInfoScreen: Tech? = null
     var infoPage: Int = 0
-
-    var mouseOverLeftArrow = false
-    var mouseOverRightArrow = false
 
     override fun init() {
         tabs = ResearchHandler.getAvailableTabs(player)
@@ -171,9 +170,9 @@ class EnchiridionScreen(private var player: PlayerEntity) : Screen(NarratorManag
         return Text.translatable("mgp.research.start").formatted(Formatting.GREEN)
     }
 
-    fun getTextRenderer(): TextRenderer {
-        return textRenderer
-    }
+    fun getTextRenderer(): TextRenderer = textRenderer
+
+    fun getItemRenderer(): ItemRenderer = itemRenderer
 
     // Rendering part
     private fun drawContent(matrices: MatrixStack, x: Int, y: Int) {
@@ -426,37 +425,35 @@ class EnchiridionScreen(private var player: PlayerEntity) : Screen(NarratorManag
             it.render(this, matrices, wInfoOffset, hInfoOffset + height, mouseX, mouseY)
             height += it.getHeight() + 2
         }
-
-        RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f)
         RenderSystem.disableBlend()
         RenderSystem.setShader { GameRenderer.getPositionTexShader() }
-        RenderSystem.setShaderTexture(0, ARROWS_TEXTURE)
 
+        RenderSystem.setShaderColor(1f, 1f, 1f, 1f)
         if (infoPage > 0) {
-            DrawableHelper.drawTexture(matrices, wInfoOffset + 10, hInfoOffset + 240, 0f, 0f, 16, 8, 16, 8)
-//            this.drawTexture(
-//                matrices,
-//                wInfoOffset + 10,
-//                hInfoOffset + 240,
-//                0,
-//                0,
-//                16,
-//                8
-//            )
+            RenderSystem.setShaderTexture(0, LEFT_ARROW_TEXTURE)
+            if (activeInfoScreen != null) {
+                var wInfoOffset = (width - 200) / 2
+                var hInfoOffset = (height - 256) / 2
+                if (infoPage > 0
+                    && mouseX.toInt() in (wInfoOffset + 10)..(wInfoOffset + 34)
+                    && mouseY.toInt() in (hInfoOffset + 236)..(hInfoOffset + 248)) {
+                    RenderSystem.setShaderColor(1f, 1f, 1f, 0.8f)
+                }
+            }
+            DrawableHelper.drawTexture(matrices, wInfoOffset + 10, hInfoOffset + 236, 0f, 0f, 24, 12, 24, 12)
         }
         // TODO
+        RenderSystem.setShaderColor(1f, 1f, 1f, 1f)
         if (infoPage < activeInfoScreen!!.infoPages.size - 1) {
-            DrawableHelper.drawTexture(matrices, wInfoOffset + 164, hInfoOffset + 240, 0f, 8f, 16, 8, 16, 8)
-//            this.drawTexture(
-//                matrices,
-//                wInfoOffset + 164,
-//                hInfoOffset + 240,
-//                0,
-//                0,
-//                16,
-//                8
-//            )
+            RenderSystem.setShaderTexture(0, RIGHT_ARROW_TEXTURE)
+            if (infoPage < activeInfoScreen!!.infoPages.size - 1
+                && mouseX.toInt() in (wInfoOffset + 156)..(wInfoOffset + 180)
+                && mouseY.toInt() in (hInfoOffset + 236)..(hInfoOffset + 248)) {
+                RenderSystem.setShaderColor(1f, 1f, 1f, 0.8f)
+            }
+            DrawableHelper.drawTexture(matrices, wInfoOffset + 156, hInfoOffset + 236, 0f, 0f, 24, 12, 24, 12)
         }
+        RenderSystem.setShaderColor(1f, 1f, 1f, 1f)
     }
 
     // Functional part
@@ -546,14 +543,14 @@ class EnchiridionScreen(private var player: PlayerEntity) : Screen(NarratorManag
             var wInfoOffset = (width - 200) / 2
             var hInfoOffset = (height - 256) / 2
             if (infoPage > 0
-                && mouseX.toInt() in (wInfoOffset + 10)..(wInfoOffset + 26)
-                && mouseY.toInt() in (hInfoOffset + 240)..(hInfoOffset + 248)) {
+                && mouseX.toInt() in (wInfoOffset + 10)..(wInfoOffset + 34)
+                && mouseY.toInt() in (hInfoOffset + 236)..(hInfoOffset + 248)) {
                 infoPage--
             }
             // TODO
             if (infoPage < activeInfoScreen!!.infoPages.size - 1
-                && mouseX.toInt() in (wInfoOffset + 164)..(wInfoOffset + 180)
-                && mouseY.toInt() in (hInfoOffset + 240)..(hInfoOffset + 248)) {
+                && mouseX.toInt() in (wInfoOffset + 156)..(wInfoOffset + 180)
+                && mouseY.toInt() in (hInfoOffset + 236)..(hInfoOffset + 248)) {
                 infoPage++
             }
         }
@@ -580,6 +577,7 @@ class EnchiridionScreen(private var player: PlayerEntity) : Screen(NarratorManag
                     shiftY += deltaY
             }
         }
+
         return super.mouseDragged(mouseX, mouseY, button, deltaX, deltaY)
     }
 
