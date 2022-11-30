@@ -1,5 +1,6 @@
 package com.armemius.magepunk.research.tech
 
+import com.armemius.magepunk.research.tech.render.PageRenderComponents
 import com.armemius.magepunk.research.tech.techs.Test1Tech
 import com.armemius.magepunk.research.tech.techs.Test2Tech
 import com.armemius.magepunk.research.tech.techs.Test3Tech
@@ -16,7 +17,8 @@ abstract class Tech(
     val posX: Int,
     val posY: Int,
     var links: List<Tech>,
-    var stages: List<TechStage>
+    var stages: List<TechStage>,
+    var infoPages: List<PageRenderComponents>
 ) {
     fun isFinished(player: PlayerEntity): Boolean {
         if (isDefault())

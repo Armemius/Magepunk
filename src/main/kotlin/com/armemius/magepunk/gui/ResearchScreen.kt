@@ -20,7 +20,6 @@ import net.minecraft.util.Formatting
 import net.minecraft.util.Identifier
 
 class ResearchScreen(val player: PlayerEntity, val item: ItemStack) : Screen(NarratorManager.EMPTY) {
-
     private val SCREEN_TEXTURE = Identifier(Magepunk.ID, "textures/gui/research/research.png")
     private val BUTTONS_TEXTURE = Identifier(Magepunk.ID, "textures/gui/research/buttons.png")
     private var name: Text? = null

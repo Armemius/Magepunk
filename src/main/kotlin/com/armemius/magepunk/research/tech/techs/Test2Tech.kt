@@ -1,12 +1,19 @@
 package com.armemius.magepunk.research.tech.techs
 
+import com.armemius.magepunk.Magepunk
 import com.armemius.magepunk.research.ResearchHandler.requireTechs
 import com.armemius.magepunk.research.tech.*
 import com.armemius.magepunk.research.tech.callbacks.CallbackPackages
 import com.armemius.magepunk.research.tech.callbacks.CallbackType
+import com.armemius.magepunk.research.tech.render.PageRenderComponents
+import com.armemius.magepunk.research.tech.render.components.ImageRenderComponent
+import com.armemius.magepunk.research.tech.render.components.PlainTextRendererComponent
+import com.armemius.magepunk.research.tech.render.components.TitleRenderComponent
 import net.minecraft.block.Blocks
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.Items
+import net.minecraft.text.Text
+import net.minecraft.util.Identifier
 import kotlin.math.sqrt
 
 class Test2Tech(links: List<Tech>): Tech(
@@ -55,6 +62,27 @@ class Test2Tech(links: List<Tech>): Tech(
                     else
                         old
                 }
+            )
+        )
+    ),
+    listOf(
+        PageRenderComponents(
+            listOf(
+                TitleRenderComponent(Text.translatable("tech.mgp.test2"), 12, -16777216),
+                PlainTextRendererComponent(Text.translatable("tech.mgp.test2.desc"), 8, -16777216)
+            )
+        ),
+        PageRenderComponents(
+            listOf(
+                TitleRenderComponent(Text.translatable("tech.mgp.test2"), 12, -16777216),
+                PlainTextRendererComponent(Text.of("AMOGUSUS PAGE 2"), 8, -16777216)
+            )
+        ),
+        PageRenderComponents(
+            listOf(
+                TitleRenderComponent(Text.translatable("tech.mgp.test2"), 12, -16777216),
+                PlainTextRendererComponent(Text.of("Incredibly sus PAGE 3"), 8, -16777216),
+                ImageRenderComponent(Identifier(Magepunk.ID, "textures/gui/research/techs/amogus.png"), 150, 150)
             )
         )
     )

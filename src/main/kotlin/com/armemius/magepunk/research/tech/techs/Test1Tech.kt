@@ -4,8 +4,12 @@ import com.armemius.magepunk.Magepunk
 import com.armemius.magepunk.research.tech.*
 import com.armemius.magepunk.research.tech.callbacks.CallbackPackages
 import com.armemius.magepunk.research.tech.callbacks.CallbackType
+import com.armemius.magepunk.research.tech.render.PageRenderComponents
+import com.armemius.magepunk.research.tech.render.components.PlainTextRendererComponent
+import com.armemius.magepunk.research.tech.render.components.TitleRenderComponent
 import net.minecraft.block.Blocks
 import net.minecraft.item.Items
+import net.minecraft.text.Text
 import java.lang.Math.sqrt
 
 class Test1Tech(links: List<Tech>): Tech(
@@ -54,6 +58,14 @@ class Test1Tech(links: List<Tech>): Tech(
                     else
                         old
                 }
+            )
+        )
+    ),
+    listOf(
+        PageRenderComponents(
+            listOf(
+                TitleRenderComponent(Text.translatable("tech.mgp.test1"), 12, -16777216),
+                PlainTextRendererComponent(Text.translatable("tech.mgp.test1.desc"), 8, -16777216)
             )
         )
     )

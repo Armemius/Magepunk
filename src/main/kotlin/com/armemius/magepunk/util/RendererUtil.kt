@@ -103,8 +103,9 @@ object RendererUtil {
                 buff += if (buff == "") "$str" else " $str"
             }
         }
-        textRenderer.draw(matrices, buff, x.toFloat() / mult, y.toFloat() / mult + lineHeight * lineCount, -16777216)
+        textRenderer.draw(matrices, buff, x.toFloat() / mult, y.toFloat() / mult + lineHeight * lineCount, color)
         matrices.pop()
         return (lineHeight * (1 + lineCount)).toInt() + 1
     }
+
 }

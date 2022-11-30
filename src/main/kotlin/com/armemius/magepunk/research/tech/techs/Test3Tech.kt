@@ -3,8 +3,12 @@ package com.armemius.magepunk.research.tech.techs
 import com.armemius.magepunk.research.tech.*
 import com.armemius.magepunk.research.tech.callbacks.CallbackPackages
 import com.armemius.magepunk.research.tech.callbacks.CallbackType
+import com.armemius.magepunk.research.tech.render.PageRenderComponents
+import com.armemius.magepunk.research.tech.render.components.PlainTextRendererComponent
+import com.armemius.magepunk.research.tech.render.components.TitleRenderComponent
 import net.minecraft.block.Blocks
 import net.minecraft.item.Items
+import net.minecraft.text.Text
 import kotlin.math.sqrt
 
 class Test3Tech(links: List<Tech>): Tech(
@@ -53,6 +57,14 @@ class Test3Tech(links: List<Tech>): Tech(
                     else
                         old
                 }
+            )
+        )
+    ),
+    listOf(
+        PageRenderComponents(
+            listOf(
+                TitleRenderComponent(Text.translatable("tech.mgp.test3"), 12, -16777216),
+                PlainTextRendererComponent(Text.translatable("tech.mgp.test3.desc"), 8, -16777216)
             )
         )
     )
